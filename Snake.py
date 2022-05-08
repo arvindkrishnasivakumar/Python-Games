@@ -73,6 +73,7 @@ def show_text(msg,x,y, color):
 
 random.randint(1, 2)
 while True:
+
     screen.fill(black)
     show_text("score: "+ str(score),10,10,red)
     snakel.insert(0,[snakex, snakey])
@@ -81,6 +82,29 @@ while True:
         pygame.display.update()
         time.sleep(10)
         break
+    if snakel[0][1] <= 0 or snakel[0][1]>=600:
+        #up and down
+        show_text("Game Over",100,100,blue)
+        pygame.display.update()
+        time.sleep(3)
+        break
+    if snakel[0][0]<=-10 or snakel[0][0] >= 600:
+        #left and right
+       show_text("Game Over",100,100,blue)
+       pygame.display.update()
+       time.sleep(3)
+       break
+    #if snakel[0][1] == 610:
+        #show_text("Game Over",100,100,blue)
+        #pygame.display.update()
+       # time.sleep(3)
+        #break
+    #if snakel[0][1] == -10:
+        #show_text("Game Over",100,100,blue)
+        #pygame.display.update()
+        #time.sleep(3)
+        #break
+
     # Draw food
     pygame.draw.rect(screen, red,(foodx,foody,10,10))
     # draw snake
@@ -99,14 +123,7 @@ while True:
         
         # print(snakel)
         
-    if snakel[0][0] == 610:
-        snakel[0][0] = 0
-    if snakel[0][0] == -10:
-        snakel[0][0] = 600
-    if snakel[0][1] == 610:
-        snakel[0][1]=0
-    if snakel[0][1] == -10:
-        snakel[0][1] = 600
+    
     
     pygame.display.update()
 
